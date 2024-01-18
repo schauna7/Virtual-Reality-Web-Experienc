@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> VR Project</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        <a-asset-item id="stego-gltf" src="scene.gltf"></a-asset-item>
+        <a-asset-item id="dino-o" src="21539_Gallimimus_v2.obj"></a-asset-item>
+        <a-asset-item id="dino-m" src="Blank.mtl"></a-asset-item>
+        <a-asset-item id="dino1-o" src="13623_Quetzalcoatlus_v1_L2.obj"></a-asset-item>
+        <a-asset-item id="dino1-m" src="13623_Quetzalcoatlus_v1_L2.mtl"></a-asset-item>
+        <a-asset-item id="dino2-o" src="T-Rex%20Model.obj"></a-asset-item>
+        <a-asset-item id="dino2-m" src="T-Rex%20Model.mtl"></a-asset-item>
+      </a-assets>
+
+      <a-sky src="#skyTexture" crossorigin="anonymous"></a-sky>
+      <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
+
+      <a-entity gltf-model="#dinoModel" position="-4 0 -0.2" animation-mixer material="color: blue">
+        <a-entity id="gallimimus" obj-model="obj: #dino-o; mtl: #dino-m" position="0 0 -2" scale="0.3 0.3 0.3"
+          animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 5000" material="color: green"
+          event-set__click="_event: click; scale: 0.4 0.4 0.4; animation__jump: property: position; to: 0 2 -5; dur: 1000; easing: easeInOutQuad"></a-entity>
+        <a-text value="Gallimimus" color="red" position="-1 1.5 3" scale="2 2 2"></a-text>
+      </a-entity>
+
+      <a-entity gltf-model="#stego-gltf" position="2 0 -5" animation-mixer material="color: pink">
+        <a-entity id="stegosaurus" position="0 0 -2" scale="0.3 0.3 0.3"
+          animation="property: position; to: 2 0 -5; loop: true; dur: 5000; easing: linear"
+          material="color: purple"></a-entity>
+        <a-text value="Stegosaurus" color="black" position="1 1.5 -10" scale="5 5 3"></a-text>
+      </a-entity>
+
+      <a-entity gltf-model="#dino1Model" position="-2 7 -5" animation-mixer material="color: blue">
+        <a-entity id="Quetzalcoatlus" obj-model="obj: #dino1-o; mtl: #dino-m" position="0 0 -2" scale="0.01 0.01 0.01"
+                  rotation="18220 90 0"
+          animation="property: position; to: -4 7 -10; loop: true; dur: 5000; easing: linear"></a-entity>
+        <a-text value="Quetzalcoatlus" color="yellow" position="-1 1.5 -10" scale="5 5 5"></a-text>
+      </a-entity>
+        
+      <a-entity gltf-model="#dino2Model" position="-5 0 0 " animation-mixer material="color: blue">
+        <a-entity id="Trex" obj-model="obj: #dino2-o; mtl: #dino-m" position="0 0 -2" scale="0.01 0.01 0.01"
+                  rotation="0 180 0"
+          animation="property: position; to: 2 0 -5; loop: true; dur: 5000; easing: linear"></a-entity>
+        <a-text value="Trex" color="yellow" position="-1 4 -4" scale="5 5 5"></a-text>
+      </a-entity>
+
+      <a-camera>
+        <a-cursor
+        ></a-cursor>
+      </a-camera>
+    </a-scene>
+  </body>
+</html>
